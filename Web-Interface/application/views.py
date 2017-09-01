@@ -15,15 +15,14 @@ from .dbconnect import Database
 def index():
 	payload = {
 		"common_captcha_source": common_captcha_source(),
+		"fun_captcha_source": fun_captcha_source(),
 		"text_captcha_source": text_captcha_source(),
 		"key_captcha_data": key_captcha_data_handler(),
 	}
 	# Обработка ПОСТ запросов
 	if request.method == 'POST':
-		if "recaptcha_invisible_btn" in request.form:
-			print(request.form)
 		# Обработка новой рекапчи
-		elif "solvemedia_btn" in request.form:
+		if "solvemedia_btn" in request.form:
 			return SolveMedia().answer_handler(request.form["adcopy_response"],
 			                            request.form["adcopy_challenge"],
 			                            request.environ['REMOTE_ADDR'])
@@ -37,16 +36,20 @@ def invisible_recaptcha():
 	if request.method == 'POST':
 		if "recaptcha_invisible_btn" in request.form:
 			print(request.form)
-			
+
 	return render_template('base.html', doc = '/invisible_recaptcha.html')
-
-
 
 
 # Функция которая возвращает рандомное изображение обычной капчи
 def common_captcha_source():
 	# Получаем список всех изображений и возвращаем рандомную картинку
 	images_list = os.listdir('application/static/image/common_image_example/')
+	return random.choice(images_list)
+
+# Функция которая возвращает рандомное изображение обычной капчи
+def fun_captcha_source():
+	# Получаем список всех изображений и возвращаем рандомную картинку
+	images_list = os.listdir('application/static/image/fun_captcha_example/')
 	return random.choice(images_list)
 
 # Функция которая возвращает рандомный вопрос текстовой капчи
@@ -66,19 +69,13 @@ def api():
 			# Проверяем капчу и ответ на соответсвие
 			return common_captcha_answer(request.form["common_captcha_src"],
 			                             request.form["common_captcha_answer"])
-		# Обработка новой рекапчи
-		elif "recaptcha_new_btn" in request.form:
-			return recaptcha_v2_new_answer(request.form["g-recaptcha-response"])
-		# Обработка невидимой рекапчи
-		elif "recaptcha_invisible_btn" in request.form:
-			print(request.form)
+
 		# Solvemedia капча
 		elif "solvemedia_btn" in request.form:
 			return SolveMedia().answer_handler(request.form["adcopy_response"],
 					                            request.form["adcopy_challenge"],
 					                            request.environ['REMOTE_ADDR'])
-		# return recaptcha_v2_new_answer(request.form["g-recaptcha-response"])
-	
+
 	# Обработка ГЕТ запросов
 	elif request.method == 'GET':
 		if "get_common_captcha" in request.args["captcha_type"]:
@@ -110,70 +107,6 @@ def common_captcha_answer(captcha_name, user_answer):
 		response.headers['Link'] = 'http://85.255.8.26/'
 		
 		return response
-
-# Обработчик новой рекапчи версии 2
-def recaptcha_v2_new_answer(g_recaptcha_response):
-	# Проверяем решил ли юзер капчу
-	payload = {
-				"secret": "6Lf77CsUAAAAAMJ1yJWbEG1VyVYKIQZWVQJRg25t",
-				"response": g_recaptcha_response,
-				}
-	# Отсылаем запрос на правильность капчи
-	captcha_answer = requests.post("https://www.google.com/recaptcha/api/siteverify", data=payload)
-
-	if captcha_answer.json()["success"]=="true":
-		data = {'request': 'OK'}
-		
-		js = json.dumps(data)
-		
-		response = Response(js, status=200, mimetype='application/json')
-		response.headers['Link'] = 'http://85.255.8.26/'
-		
-		return response
-	else:
-		data = {'request': 'FAIL'}
-		# Если есть ошибки - высылаем и их
-		if "error-codes" in captcha_answer.json() and captcha_answer.json()["error-codes"]!=[]:
-			data.update({"recaptcha_error": captcha_answer.json()["error-codes"]})
-		
-		js = json.dumps(data)
-		
-		response = Response(js, status=200, mimetype='application/json')
-		response.headers['Link'] = 'http://85.255.8.26/'
-		
-		return response
-
-# Обработчик невидимой капчи
-def recaptcha_invisible_answer(g_recaptcha_response):
-		# Проверяем решил ли юзер капчу
-		payload = {
-			"secret": "6LcC7SsUAAAAAEpiGi1CQO3uoQbfTCzreTBmtWmm",
-			"response": g_recaptcha_response,
-		}
-		# Отсылаем запрос на правильность капчи
-		captcha_answer = requests.post("https://www.google.com/recaptcha/api/siteverify", data=payload)
-		
-		if captcha_answer.json()["success"] == "true":
-			data = {'request': 'OK'}
-			
-			js = json.dumps(data)
-			
-			response = Response(js, status=200, mimetype='application/json')
-			response.headers['Link'] = 'http://85.255.8.26/'
-			
-			return response
-		else:
-			data = {'request': 'FAIL'}
-			# Если есть ошибки - высылаем и их
-			if "error-codes" in captcha_answer.json() and captcha_answer.json()["error-codes"] != []:
-				data.update({"recaptcha_error": captcha_answer.json()["error-codes"]})
-			
-			js = json.dumps(data)
-			
-			response = Response(js, status=200, mimetype='application/json')
-			response.headers['Link'] = 'http://85.255.8.26/'
-			
-			return response
 
 
 # ERRORS

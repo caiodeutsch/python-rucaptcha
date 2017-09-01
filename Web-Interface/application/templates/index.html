@@ -35,7 +35,7 @@
                 {% endblock %}
             </div>
 
-            <div style="height: 100px; margin-top: 15px">
+            <div style="height: 50px; margin-top: 15px">
                 <label>
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                         <a href="/invisible_recaptcha">
@@ -46,28 +46,10 @@
             </div>
 
             <div style="height: 100px; margin-top: 15px">
-                <label>Click Captcha</label>
-            	<br/>
-                <button type="submit" name="big_captcha_btn" class="btn btn-default" data-toggle="tooltip" data-placement="left" 		onclick="this.style.display=&#39;none&#39;;">
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                    Отправить
-                </button>
-                <br/>
+                {% block fun_captcha %}
+                    {% include 'elements/fun_captcha.html' %}
+                {% endblock %}
             </div>
-
-            <div style="height: 100px; margin-top: 15px">
-                <label>Rotate Captcha</label>
-            	<br/>
-                <button type="submit" name="big_captcha_btn" class="btn btn-default" data-toggle="tooltip" data-placement="left" 		onclick="this.style.display=&#39;none&#39;;">
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                    Отправить
-                </button>
-                <br/>
-            </div>
-
-
         </div>
-
     </div>
-
 {% endblock %}

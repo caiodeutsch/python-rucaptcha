@@ -9,11 +9,11 @@ class Database:
     # Создаём таблицы для работы
     def creating_tables(self):
         # Добавляем таблицу c текстовой капчёй
-        self.db_cursor.execute('''
-                CREATE TABLE IF NOT EXISTS text_captcha(
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    captcha_text TEXT UNIQUE ,
-                    captcha_key TEXT);''')
+
+        self.db_cursor.execute('''CREATE TABLE IF NOT EXISTS text_captcha(
+                                  id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                  captcha_text TEXT UNIQUE ,
+                                  captcha_key TEXT);''')
 
         # Вносим изменения
         self.db_connect.commit()
