@@ -18,6 +18,7 @@ def index():
 		"fun_captcha_source": fun_captcha_source(),
 		"text_captcha_source": text_captcha_source(),
 		"key_captcha_data": key_captcha_data_handler(),
+		"media_captcha_source": media_captcha_source()
 	}
 	# Обработка ПОСТ запросов
 	if request.method == 'POST':
@@ -50,6 +51,12 @@ def common_captcha_source():
 def fun_captcha_source():
 	# Получаем список всех изображений и возвращаем рандомную картинку
 	images_list = os.listdir('application/static/image/fun_captcha_example/')
+	return random.choice(images_list)
+
+# Функция которая возвращает рандомное изображение обычной капчи
+def media_captcha_source():
+	# Получаем список всех изображений и возвращаем рандомную картинку
+	images_list = os.listdir('application/static/media/solvemedia_audio/')
 	return random.choice(images_list)
 
 # Функция которая возвращает рандомный вопрос текстовой капчи

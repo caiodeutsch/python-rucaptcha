@@ -1,11 +1,19 @@
 {% block content %}
-    <form  style="height: 320px" enctype="multipart/form-data" method="POST">
+    <form  style="height: 350px" enctype="multipart/form-data" method="POST">
         <label>Solve Media Captcha</label>
         <div class="input-group">
             <div style="width:100px;" class="input-group-addon">
                 Публичный ключ c-key
             </div>
             <input style="height: 30px; width: 200px" value="xv5l9hrk6f2BGcEjj8nfKJopiM.WbuFO">
+        </div>
+        <div class="input-group">
+            <audio style="width: 373px" controls>
+                <source src="http://85.255.8.26/static/media/solvemedia_audio/{{ payload.media_captcha_source }}">
+                <p>Ваш браузер не поддерживает аудио</p>
+
+                <a href="http://85.255.8.26/static/media/solvemedia_audio/{{ payload.media_captcha_source }}">Solvemedia Audio</a>
+            </audio>
         </div>
         <script type="text/javascript"
                 src="http://api.solvemedia.com/papi/challenge.script?k=xv5l9hrk6f2BGcEjj8nfKJopiM.WbuFO">
