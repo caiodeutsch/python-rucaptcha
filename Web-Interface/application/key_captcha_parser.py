@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-import re, json
+import re
 
 
 def key_captcha_data_handler():
