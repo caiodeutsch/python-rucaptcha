@@ -1,7 +1,7 @@
 {% block content %}
-    <div style="margin-left: 50px; margin-right: 50px">
+    <div  class="col-sm-12 col-lg-9 col-md-9 col-sm">
         <div id="two_column>">
-            <div id="first_column">
+            <div class="col-sm-12 col-lg-6 col-md-6 col-sm">
                 <div>
                     {% block common_captcha %}
                         {% include 'elements/common_captcha.html' %}
@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div id="second_column">
+        <div class="col-sm-12 col-lg-6 col-md-6 col-sm">
             <div>
                 {% block recaptcha_v2_new %}
                     {% include 'elements/recaptcha_v2_new.html' %}
