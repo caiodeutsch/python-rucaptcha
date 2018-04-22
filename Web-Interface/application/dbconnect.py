@@ -1,6 +1,7 @@
 import sqlite3
 import json
 
+
 class Database:
     def __init__(self):
         self.db_connect = sqlite3.connect('python_rucaptcha.db')
@@ -28,5 +29,3 @@ class Database:
     # Закрываем соединение с БД
     def __del__(self):
         self.db_connect.close()
-
-        
