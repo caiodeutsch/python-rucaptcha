@@ -21,10 +21,15 @@ class Database:
     
     # Получение списка вопросов и ответов тектсовой капчи
     def get_text_captcha(self):
-        self.db_cursor.execute('''SELECT captcha_text, captcha_key FROM text_captcha''')
+        self.db_cursor.execute('''SELECT id, captcha_text, captcha_key FROM text_captcha''')
         
         return self.db_cursor.fetchall()
 
+    # Получение списка вопросов и ответов тектсовой капчи
+    def get_text_captcha_answer(self, question_id: int):
+        self.db_cursor.execute(f'''SELECT captcha_key FROM text_captcha WHERE id={question_id}''')
+
+        return self.db_cursor.fetchone()
 
     # Закрываем соединение с БД
     def __del__(self):

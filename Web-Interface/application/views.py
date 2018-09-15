@@ -3,7 +3,6 @@ from application import app
 import os
 import random
 import json
-import requests
 
 from .key_captcha_parser import key_captcha_data_handler
 from .solve_media_captcha_check import SolveMedia
@@ -30,11 +29,15 @@ def index():
 
         # обработка обычной капчи-изображения
         elif 'common_captcha_btn' in request.form:
-            pass
+            # Проверяем капчу и ответ на соответсвие
+            return common_captcha_answer(request.form["common_captcha_src"],
+                                         request.form["common_captcha_answer"])
 
         # обработка капчи-текста
         elif 'text_captcha_btn' in request.form:
-            pass
+            # Проверяем капчу и ответ на соответсвие
+            return text_captcha_answer(request.form["text_captcha_btn"],
+                                       request.form["text_captcha_answer"])
 
     return render_template('base.html', doc='/index.html', payload=payload)
 
@@ -44,7 +47,7 @@ def invisible_recaptcha():
     # Обработка ПОСТ запросов
     if request.method == 'POST':
         if "recaptcha_invisible_btn" in request.form:
-            print(request.form)
+            pass
 
     return render_template('base.html', doc='/invisible_recaptcha.html')
 
@@ -101,12 +104,12 @@ def api():
     # Обработка ГЕТ запросов
     elif request.method == 'GET':
         if "get_common_captcha" in request.args["captcha_type"]:
-            data = {'captcha_src': "http://85.255.8.26/static/image/common_image_example/" + common_captcha_source()}
+            data = {'captcha_src': f"{request.host_url}static/image/common_image_example/" + common_captcha_source()}
 
             js = json.dumps(data)
 
             response = Response(js, status=200, mimetype='application/json')
-            response.headers['Link'] = 'http://85.255.8.26/'
+            response.headers['Link'] = request.host_url
             return response
 
 
@@ -118,7 +121,7 @@ def common_captcha_answer(captcha_name, user_answer):
         js = json.dumps(data)
 
         response = Response(js, status=200, mimetype='application/json')
-        response.headers['Link'] = 'http://85.255.8.26/'
+        response.headers['Link'] = request.host_url
 
         return response
     else:
@@ -127,7 +130,32 @@ def common_captcha_answer(captcha_name, user_answer):
         js = json.dumps(data)
 
         response = Response(js, status=200, mimetype='application/json')
-        response.headers['Link'] = 'http://85.255.8.26/'
+        response.headers['Link'] = request.host_url
+
+        return response
+
+
+# Обработчик текстовой капчи
+def text_captcha_answer(captcha_id: int, user_answer: str):
+    # получаем верный ответ на текстовую капчу
+    truth_answer = Database().get_text_captcha_answer(question_id = captcha_id)[0]
+    # сравниваем ответы и возвращаем результат
+    if truth_answer == user_answer:
+        data = {'request': 'OK'}
+
+        js = json.dumps(data)
+
+        response = Response(js, status=200, mimetype='application/json')
+        response.headers['Link'] = request.host_url
+
+        return response
+    else:
+        data = {'request': 'FAIL'}
+
+        js = json.dumps(data)
+
+        response = Response(js, status=200, mimetype='application/json')
+        response.headers['Link'] = request.host_url
 
         return response
 
