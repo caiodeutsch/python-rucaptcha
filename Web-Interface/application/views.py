@@ -42,7 +42,7 @@ def index():
     return render_template('base.html', doc='/index.html', payload=payload)
 
 
-@app.route('/invisible_recaptcha/', methods=["GET", "POST"])
+@app.route('/invisible-recaptcha/', methods=["GET", "POST"])
 def invisible_recaptcha():
     # Обработка ПОСТ запросов
     if request.method == 'POST':
