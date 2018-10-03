@@ -1,12 +1,22 @@
-from flask import Response, render_template, request
-from application import app
 import os
 import random
 import json
 
-from .key_captcha_parser import key_captcha_data_handler
-from .solve_media_captcha_check import SolveMedia
-from .dbconnect import Database
+from flask import Flask
+from flask import Response, render_template, request
+
+from key_captcha_parser import key_captcha_data_handler
+from solve_media_captcha_check import SolveMedia
+from dbconnect import Database
+
+app = Flask(__name__)
+app.config.from_object('config')
+
+
+@app.before_first_request
+def start_up_settings():
+    # создаём таблицу в БД, если ещё не создана
+    Database().creating_tables()
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -55,21 +65,21 @@ def invisible_recaptcha():
 # Функция которая возвращает рандомное изображение обычной капчи
 def common_captcha_source():
     # Получаем список всех изображений и возвращаем рандомную картинку
-    images_list = os.listdir('application/static/image/common_image_example/')
+    images_list = os.listdir('static/image/common_image_example/')
     return random.choice(images_list)
 
 
 # Функция которая возвращает рандомное изображение обычной капчи
 def fun_captcha_source():
     # Получаем список всех изображений и возвращаем рандомную картинку
-    images_list = os.listdir('application/static/image/fun_captcha_example/')
+    images_list = os.listdir('static/image/fun_captcha_example/')
     return random.choice(images_list)
 
 
 # Функция которая возвращает рандомное изображение обычной капчи
 def media_captcha_source():
     # Получаем список всех изображений и возвращаем рандомную картинку
-    images_list = os.listdir('application/static/media/solvemedia_audio/')
+    images_list = os.listdir('static/media/solvemedia_audio/')
     return random.choice(images_list)
 
 
@@ -77,7 +87,7 @@ def media_captcha_source():
 def text_captcha_source():
     # Получаем список всех изображений и возвращаем рандомную картинку
     text_captcha_list = Database().get_text_captcha()
-    return random.choice(text_captcha_list)
+    return random.choice(text_captcha_list) if text_captcha_list else False
 
 
 '''
@@ -167,5 +177,9 @@ def page_not_found(e):
 
 
 @app.errorhandler(500)
-def page_not_found(e):
+def internal_server_error(e):
     return render_template('base.html', doc='mistakes/500.html')
+
+
+if __name__ == "__main__":
+    app.run(debug=False)
