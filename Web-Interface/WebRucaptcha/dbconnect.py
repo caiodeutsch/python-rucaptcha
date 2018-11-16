@@ -5,7 +5,7 @@ import logme
 @logme.log(config='db_log_info', name='Database')
 class Database:
     def __init__(self):
-        self.db_connect = sqlite3.connect('python_rucaptcha.db')
+        self.db_connect = sqlite3.connect('WebRucaptcha/python_rucaptcha.db')
         self.db_cursor = self.db_connect.cursor()
 
     # Создаём таблицы для работы
@@ -26,7 +26,7 @@ class Database:
         try:
             self.db_cursor.execute('''SELECT id, captcha_text, captcha_key FROM text_captcha''')
 
-            self.logger.info('Text - text captcha data selected;')
+            self.logger.info('Text - `Text captcha` data selected;')
 
             return self.db_cursor.fetchall()
         except Exception as err:
@@ -38,12 +38,12 @@ class Database:
         try:
             self.db_cursor.execute(f'''SELECT captcha_key FROM text_captcha WHERE id={question_id}''')
 
-            self.logger.info('Text - text captcha answer data selected;')
+            self.logger.info('Text - `Text captcha` answer data selected;')
 
             return self.db_cursor.fetchone()
         except Exception as err:
 
-            self.logger.error(f'Text - text captcha answer data NOT selected; Error - {err} .')
+            self.logger.error(f'Text - `Text captcha` answer data NOT selected; Error - {err} .')
 
     # Закрываем соединение с БД
     def __del__(self):

@@ -1,0 +1,17 @@
+2018-11-16 19:20:44,328 - WebRucaptcha - INFO - Page - index, request - GET, from - 127.0.0.1
+2018-11-16 19:21:31,220 - WebRucaptcha - INFO - Page - index, request - GET, from - 127.0.0.1
+2018-11-16 19:22:26,563 - WebRucaptcha - INFO - Page - index, request - GET, from - 127.0.0.1
+2018-11-16 19:29:50,002 - WebRucaptcha - INFO - Page - index, request - GET, from - 127.0.0.1
+2018-11-16 19:33:52,018 - WebRucaptcha - INFO - Page - index, request - GET, from - 127.0.0.1
+2018-11-16 19:33:53,397 - WebRucaptcha - INFO - Page - index, request - GET, from - 127.0.0.1
+2018-11-16 19:34:05,648 - WebRucaptcha - INFO - Page - index, request - GET, from - 127.0.0.1
+2018-11-16 19:34:42,690 - WebRucaptcha - INFO - Page - invisible-recaptcha, request - GET, from - 127.0.0.1
+2018-11-16 19:34:47,625 - WebRucaptcha - INFO - Page - index, request - GET, from - 127.0.0.1
+2018-11-16 19:34:55,827 - WebRucaptcha - INFO - Page - index, request - POST, from - 127.0.0.1
+2018-11-16 19:34:55,829 - WebRucaptcha - INFO - Image captcha button click
+2018-11-16 19:34:57,845 - WebRucaptcha - INFO - Page - index, request - GET, from - 127.0.0.1
+2018-11-16 19:35:48,675 - WebRucaptcha - INFO - Page - index, request - GET, from - 127.0.0.1
+2018-11-16 19:35:52,058 - WebRucaptcha - INFO - Page - index, request - POST, from - 127.0.0.1
+2018-11-16 19:35:52,061 - WebRucaptcha - INFO - Text captcha button click
+2018-11-16 19:36:05,408 - WebRucaptcha - INFO - Page - index, request - GET, from - 127.0.0.1
+2018-11-16 19:38:13,281 - WebRucaptcha - INFO - Page - index, request - GET, from - 127.0.0.1

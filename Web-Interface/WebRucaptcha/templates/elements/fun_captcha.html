@@ -1,6 +1,6 @@
 {% block content %}
   <form  name="fun_captcha" enctype="multipart/form-data" method="post" style="height: 320px">
-      <label>Rotate Captcha(Fun Captcha)</label>
+      <label><a href="https://www.funcaptcha.com/demo/">Rotate Captcha(Fun Captcha)</a> </label>
       <div class="input-group">
           <div style="width:100px;" class="input-group-addon">
               Прямая ссылка
@@ -12,11 +12,4 @@
       </div>
       <img src="http://85.255.8.26/static/image/fun_captcha_example/{{ payload.fun_captcha_source }}" style="max-height:350px; max-width:350px">
   </form>
-<label>
-    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-    <a href="https://www.funcaptcha.com/demo/">
-        Перейти к живому примеру FunCaptcha
-    </a>
-    </span>
-</label>
 {% endblock %}
