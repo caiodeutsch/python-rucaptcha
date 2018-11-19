@@ -7,3 +7,7 @@ python_rucaptcha/__pycache__/
 build/
 
 \.vscode/
+
+Web-Interface/WebRucaptcha/__pycache__/
+
+Web-Interface/WebRucaptcha/web_logpath/
