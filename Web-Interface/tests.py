@@ -20,9 +20,33 @@ def client():
     os.close(db_fd)
     os.unlink(app.config['DATABASE'])
 
-def test_empty_db(client):
-    """Start with a blank database."""
+"""
+Page response tests
+"""
+def test_index_page(client):
 
-    rv = client.get('/')
-    print(rv)
-    assert 1==1
+    response = client.get('/')
+    
+    assert response.status_code in (200, 301)
+
+    response = client.get('index')
+    
+    assert response.status_code in (200, 301)
+
+def test_invisible_captcha_page(client):
+
+    response = client.get('invisible-recaptcha')
+    
+    assert response.status_code in (200, 301)
+
+"""
+API tests
+"""
+
+def test_image_captcha_api(client):
+
+    response = client.get('api/?captcha_type=get_common_captcha')
+    
+    assert response.status_code in (200, 301)
+
+    assert response.json.get('captcha_src')
