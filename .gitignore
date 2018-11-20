@@ -15,3 +15,5 @@ Web-Interface/WebRucaptcha/web_logpath/
 Web-Interface/__pycache__/
 
 Web-Interface/WebRucaptcha_Env/
+
+Web-Interface/\.pytest_cache/
