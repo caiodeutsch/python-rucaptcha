@@ -9,7 +9,7 @@
                value="{{ payload.common_captcha_source }}">
 
           <input readonly style="height: 30px; width: 200px" maxlength="400" name="common_captcha_src"
-               value="http://85.255.8.26/static/image/common_image_example/{{ payload.common_captcha_source }}">
+               value="/static/image/common_image_example/{{ payload.common_captcha_source }}">
       </div>
       <div class="input-group">
           <div style="width:125px;" class="input-group-addon">
@@ -17,7 +17,7 @@
           </div>
       <input style="height: 30px; width: 200px" maxlength="400" name="common_captcha_answer">
       </div>
-      <img src="http://85.255.8.26/static/image/common_image_example/{{ payload.common_captcha_source }}" style="max-height:350px; max-width:350px">
+      <img src="/static/image/common_image_example/{{ payload.common_captcha_source }}" style="max-height:350px; max-width:350px">
       <div>
           <button type="submit" name="common_captcha_btn" class="btn btn-default" data-toggle="tooltip"
                   data-placement="left" onclick="this.style.display='none';">

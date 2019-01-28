@@ -1,8 +1,8 @@
 {% block content %}
     <form style="height: 350px" name="invisible_recaptcha" id="invisible_recaptcha" method="POST">
-        <label>Key Captcha</label>
+        <label></label><a href="https://www.keycaptcha.com/signup/">Key Captcha</a></label>
         <p></p>
-        <img src="http://85.255.8.26/static/image/key_captcha.png" style="max-height:350px; max-width:350px">
+        <img src="/static/image/key_captcha.png" style="max-height:350px; max-width:350px">
         <div class="input-group">
             <div style="width:50%;" class="input-group-addon">
                 s_s_c_user_id
@@ -33,12 +33,5 @@
             </div>
             <input style="height: 30px; width: 200px" value="https://www.keycaptcha.com/signup/">
         </div>
-        <label>
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-            <a href="https://www.keycaptcha.com/signup/">
-                Перейти к Key Captcha
-            </a>
-            </span>
-        </label>
     </form>
 {% endblock %}
