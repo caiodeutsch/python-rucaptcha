@@ -20,6 +20,7 @@ def index(logger=None):
     payload = {
         "common_captcha_source": common_captcha_source(),
         "fun_captcha_source": fun_captcha_source(),
+        "geetest_captcha_source": geetest_captcha_source(),
         "text_captcha_source": text_captcha_source(),
         "key_captcha_data": key_captcha_data_handler(),
         "media_captcha_source": media_captcha_source()
@@ -70,14 +71,20 @@ def common_captcha_source():
     return random.choice(images_list)
 
 
-# Функция которая возвращает рандомное изображение обычной капчи
+# Функция которая возвращает рандомное изображение Fun-капчи
 def fun_captcha_source():
     # Получаем список всех изображений и возвращаем рандомную картинку
     images_list = os.listdir('WebRucaptcha/static/image/fun_captcha_example/')
     return random.choice(images_list)
 
 
-# Функция которая возвращает рандомное изображение обычной капчи
+# Функция которая возвращает рандомное изображение GeeTest-капчи
+def geetest_captcha_source():
+    # Получаем список всех изображений и возвращаем рандомную картинку
+    images_list = os.listdir('WebRucaptcha/static/image/gee_test/')
+    return random.choice(images_list)
+
+# Функция которая возвращает рандомное изображение Media-капчи
 def media_captcha_source():
     # Получаем список всех изображений и возвращаем рандомную картинку
     images_list = os.listdir('WebRucaptcha/static/media/solvemedia_audio/')

@@ -1,0 +1,7 @@
+{% block content %}
+    <form  name="fun_captcha" enctype="multipart/form-data" method="post" style="height: 320px">
+        <label><a href="https://www.geetest.com/en/">GeeTest Captcha</a> </label>
+        <br>
+        <img src="/static/image/gee_test/{{ payload.geetest_captcha_source }}" style="max-height:350px; max-width:350px">
+    </form>
+{% endblock %}
