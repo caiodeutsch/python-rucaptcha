@@ -1,10 +1,10 @@
 {% block content %}
     <form style="height: 270px" name="invisible_recaptcha" id="invisible_recaptcha" method="POST">
-        <label>Рекапча v.2 невидимая</label>
+        <label>ReCaptcha v2 invisible</label>
         <p></p>
         <div class="input-group">
             <div style="width:100px;" class="input-group-addon">
-                Публичный ключ invisible re-капчи
+                Publick key invisible ReCaptcha
             </div>
             <input readonly style="height: 30px; width: 200px" value="6LcC7SsUAAAAAN3AOB-clPIsrKfnBUlO2QkC_vQ7">
         </div>
@@ -15,12 +15,12 @@
                 data-sitekey="6LcC7SsUAAAAAN3AOB-clPIsrKfnBUlO2QkC_vQ7"
                 data-callback="onSubmit">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-            Отправить
+            Send
         </button>
     </form>
     <script>
         function onSubmit(token) {
-            // отправить форму на сервер
+            // Send форму на сервер
             document.getElementById("invisible_recaptcha").submit();
         }
     </script>

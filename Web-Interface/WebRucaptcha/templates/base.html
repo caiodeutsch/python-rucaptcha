@@ -5,7 +5,8 @@
 	<link rel="shortcut icon" href="{{ url_for('static', filename='image/logo.gif') }}" type="image/png">
 	<meta charset="utf-8">
 	<meta name="description" content="capctha">
-	<link href="{{ url_for('static', filename='bootstrap/css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='bootstrap/css/style.css') }}" rel="stylesheet">
+    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -35,12 +36,16 @@
       {% endblock %}
   </header>
   <main>
-      {% block user_menu %}
-          {% include 'elements/user_menu.html' %}
-      {% endblock %}
-      {% block page %}
-          {% include doc %}
-      {% endblock %}
+    <div class="container" style="padding-top: 70px">
+
+        
+        {% block user_menu %}
+            {% include 'elements/user_menu.html' %}
+        {% endblock %}
+        {% block page %}
+            {% include doc %}
+        {% endblock %}
+    </div>
   </main>
   </body>
 

@@ -1,9 +1,9 @@
 {% block content %}
   <form  name="common_captcha" enctype="multipart/form-data" method="post" style="height: 330px">
-    <label>Обычная капча</label>
+    <label>Image captcha</label>
       <div class="input-group">
           <div style="width:100px;" class="input-group-addon">
-              Прямая ссылка
+              Link
           </div>
           <input readonly type="hidden" style="height: 30px; width: 200px" maxlength="400" name="common_captcha_src"
                value="{{ payload.common_captcha_source }}">
@@ -13,7 +13,7 @@
       </div>
       <div class="input-group">
           <div style="width:125px;" class="input-group-addon">
-              Ответ
+              Answer
           </div>
       <input style="height: 30px; width: 200px" maxlength="400" name="common_captcha_answer">
       </div>
@@ -22,7 +22,7 @@
           <button type="submit" name="common_captcha_btn" class="btn btn-default" data-toggle="tooltip"
                   data-placement="left" onclick="this.style.display='none';">
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-              Отправить
+              Send
           </button>
       </div>
   </form>

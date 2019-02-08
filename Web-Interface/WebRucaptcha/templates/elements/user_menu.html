@@ -1,58 +1,36 @@
 {% block content %}
 		<div class="col-sm-12 col-lg-3 col-md-3 col-sm">
 
-			<h4>Меню/Menu</h4>
-
-            Beginning with 06.08.2017
-        <p>You can contact with admin`s on
-            <a href="https://github.com/AndreiDrang/python-rucaptcha">GitHub</a>
-                    <a href="https://rucaptcha.com/?from=4170435">
-                        <button title="Переход на сайт сервиса" style="min-width:90%; max-width: 100%"
-                                type="button" class="btn btn-default"
-                                data-toggle="modal">
-                            <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-                            Сервис/service RuCaptcha
-                        </button>
-                    </a>
-                    <a href="http://getcaptchasolution.com/vchfpctqyz">
-                        <button title="Переход на сайт сервиса" style="min-width:90%; max-width: 100%"
-                                type="button" class="btn btn-default"
-                                data-toggle="modal">
-                            <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
-                            Сервис/service Anti-Captcha
-                        </button>
-                    </a>
-                    <a href="https://github.com/AndreiDrang/python-rucaptcha">
-                        <button title="Переход на сайт с исходным кодом библиотеки" style="min-width:90%; max-width: 100%"
-                                type="button" class="btn btn-default"
-                                data-toggle="modal">
-                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                            Исходные файлы/Source files
-                        </button>
-                    </a>
-                    <a href="{{ url_for('invisible_recaptcha') }}">
-                        <button title="Страница с Invisible ReCaptcha" style="min-width:90%; max-width: 100%"
-                                type="button" class="btn btn-default"
-                                data-toggle="modal">
-                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-                            Невидимая/Invisible ReCaptcha
-                        </button>
-                    </a>
-
-                    <a href="https://t.me/joinchat/CD2EtQ5Pm0dmoSQQMTkVlw">
-                        <button title="Страница с мануалом по использованию библиотеки" style="min-width:90%; max-width: 100%"
-                                type="button" class="btn btn-default"
-                                data-toggle="modal">
-                            <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                            Связь/Сommunication Telegram
-                        </button>
-                    </a>
-
-                      <a style="text-decoration:none; font-weight:bold;" href="https://rucaptcha.com/?from=4170435">
-                          <img src="http://www.rucaptcha.com/template/files/uploads/banner/702460e856137dccec0f73be773bc7fb.gif">
-                      </a>
+			<h4>Menu</h4>
 
 
+            <ul class="list-group">
+                <a title="Переход на сайт сервиса" class="list-group-item" href="https://rucaptcha.com/?from=4170435">
+                    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                        RuCaptcha
+                </a>
+                <a title="Переход на сайт сервиса" class="list-group-item" href="http://getcaptchasolution.com/vchfpctqyz">
+                    <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
+                        AntiCaptcha
+                </a>
+                <a title="Переход на сайт сервиса" class="list-group-item" href="https://github.com/AndreiDrang">
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                        Git source files
+                </a>
+                <a title="Переход на сайт сервиса" class="list-group-item" href="https://t.me/joinchat/CD2EtQ5Pm0dmoSQQMTkVlw">
+                    <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                        Telegram
+                </a>
+                <a title="Переход на сайт сервиса" class="list-group-item" href="{{ url_for('invisible_recaptcha') }}">
+                    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                        Invisible ReCaptcha
+                </a>                     
+            </ul>
+
+           
+            <a style="text-decoration:none; font-weight:bold;" href="https://rucaptcha.com/?from=4170435">
+                <img class="img-fluid" style="height: 250px; width: 100%; display: block;" src="http://www.rucaptcha.com/template/files/uploads/banner/702460e856137dccec0f73be773bc7fb.gif">
+            </a>
 		</div>
 
 {% endblock %}

@@ -3,14 +3,14 @@
     <label>Текстовая капча</label>
     <div class="input-group">
         <div style="width:100px;" class="input-group-addon">
-            Вопрос
+            Question
         </div>
         <input readonly style="height: 30px; width: 230px" maxlength="400" name="text_captcha_question"
                value="{{ payload.text_captcha_source[1] }}">
     </div>
       <div class="input-group">
                 <div style="width:100px;" class="input-group-addon">
-            Ответ
+            Answer
       </div>
       <input style="height: 30px; width: 150px" maxlength="400" name="text_captcha_answer"
              value="{{ payload.text_captcha_source[2] }}">
@@ -20,7 +20,7 @@
           <button type="submit" name="text_captcha_btn" class="btn btn-default" data-toggle="tooltip"
                   data-placement="left" onclick="this.style.display='none';" value="{{ payload.text_captcha_source[0] }}">
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-              Отправить
+              Send
           </button>
       </div>
   </form>
