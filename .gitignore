@@ -3,7 +3,7 @@ python_rucaptcha.egg-info/
 \.idea/
 /ico.png
 CaptchaTester/__pycache__/
-python_rucaptcha/__pycache__/
+python_rucaptcha/
 build/
 
 \.vscode/
